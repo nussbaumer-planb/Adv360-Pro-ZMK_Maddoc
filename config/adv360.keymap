@@ -11,130 +11,6 @@
       #include "macros.dtsi"
       #include "version.dtsi"
 
-      // ä (00E4)
-      de_ae: de_ae {
-          compatible = "zmk,behavior-macro";
-          label = "DE_AE"; #binding-cells = <0>;
-          bindings = <
-              &macro_press &kp RALT &kp U
-              &macro_release &kp RALT
-              &kp N0 &kp N0 &kp E &kp N4
-              &kp ENTER
-          >;
-      };
-      // Ä (00C4)
-      de_ae_cap: de_ae_cap {
-          compatible = "zmk,behavior-macro";
-          label = "DE_AE_CAP"; #binding-cells = <0>;
-          bindings = <
-              &macro_press &kp RALT &kp U
-              &macro_release &kp RALT
-              &kp N0 &kp N0 &kp C &kp N4
-              &kp ENTER
-          >;
-      };
-
-      // ö (00F6)
-      de_oe: de_oe {
-          compatible = "zmk,behavior-macro";
-          label = "DE_OE"; #binding-cells = <0>;
-          bindings = <
-              &macro_press &kp RALT &kp U
-              &macro_release &kp RALT
-              &kp N0 &kp N0 &kp F &kp N6
-              &kp ENTER
-          >;
-      };
-      // Ö (00D6)
-      de_oe_cap: de_oe_cap {
-          compatible = "zmk,behavior-macro";
-          label = "DE_OE_CAP"; #binding-cells = <0>;
-          bindings = <
-              &macro_press &kp RALT &kp U
-              &macro_release &kp RALT
-              &kp N0 &kp N0 &kp D &kp N6
-              &kp ENTER
-          >;
-      };
-
-      // ü (00FC)
-      de_ue: de_ue {
-          compatible = "zmk,behavior-macro";
-          label = "DE_UE"; #binding-cells = <0>;
-          bindings = <
-              &macro_press &kp RALT &kp U
-              &macro_release &kp RALT
-              &kp N0 &kp N0 &kp F &kp C
-              &kp ENTER
-          >;
-      };
-      // Ü (00DC)
-      de_ue_cap: de_ue_cap {
-          compatible = "zmk,behavior-macro";
-          label = "DE_UE_CAP"; #binding-cells = <0>;
-          bindings = <
-              &macro_press &kp RALT &kp U
-              &macro_release &kp RALT
-              &kp N0 &kp N0 &kp D &kp C
-              &kp ENTER
-          >;
-      };
-
-      // ß (00DF)
-      de_ss: de_ss {
-          compatible = "zmk,behavior-macro";
-          label = "DE_SS"; #binding-cells = <0>;
-          bindings = <
-              &macro_press &kp RALT &kp U
-              &macro_release &kp RALT
-              &kp N0 &kp N0 &kp D &kp F
-              &kp ENTER
-          >;
-      };
-      // ẞ (1E9E)
-      de_ss_cap: de_ss_cap {
-          compatible = "zmk,behavior-macro";
-          label = "DE_SS_CAP"; #binding-cells = <0>;
-          bindings = <
-              &macro_press &kp RALT &kp U
-              &macro_release &kp RALT
-              &kp N1 &kp E &kp N9 &kp E
-              &kp ENTER
-          >;
-      };
-
-      shift_sel_ae: shift_sel_ae {
-          compatible = "zmk,behavior-mod-morph";
-          label = "SHIFT_SEL_AE";
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-          bindings = <&de_ae &de_ae_cap>;
-      };
-
-      shift_sel_oe: shift_sel_oe {
-          compatible = "zmk,behavior-mod-morph";
-          label = "SHIFT_SEL_OE";
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-          bindings = <&de_oe &de_oe_cap>;
-      };
-
-      shift_sel_ue: shift_sel_ue {
-          compatible = "zmk,behavior-mod-morph";
-          label = "SHIFT_SEL_UE";
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-          bindings = <&de_ue &de_ue_cap>;
-      };
-
-      shift_sel_ss: shift_sel_ss {
-          compatible = "zmk,behavior-mod-morph";
-          label = "SHIFT_SEL_SS";
-          #binding-cells = <0>;
-          mods = <(MOD_LSFT|MOD_RSFT)>;
-          bindings = <&de_ss &de_ss_cap>;
-      };
-	  
       hm: homerow_mods {
           compatible = "zmk,behavior-hold-tap";
           label = "HOMEROW_MODS";
@@ -144,7 +20,65 @@
           flavor = "tap-preferred";
           bindings = <&kp>, <&kp>;
       };
-    };
+
+      // --- Windows: Alt + KP_PLUS + Hex ---
+      ae_l: ae_l {
+        compatible = "zmk,behavior-macro";
+        label = "AE_l";
+        #binding-cells = <0>;
+        bindings = <
+      	&macro_press   &kp LALT
+      	&macro_tap     &kp KP_PLUS &kp N0 &kp N0 &kp E &kp N4    // 00E4 = ä
+      	&macro_release &kp LALT
+        >;
+      };
+      ae_u: ae_u { compatible = "zmk,behavior-macro"; label = "AE_u"; #binding-cells = <0>;
+        bindings = < &macro_press &kp LALT
+      			   &macro_tap   &kp KP_PLUS &kp N0 &kp N0 &kp C &kp N4    // 00C4 = Ä
+      			   &macro_release &kp LALT >; };
+
+      oe_l: oe_l { compatible = "zmk,behavior-macro"; label = "OE_l"; #binding-cells = <0>;
+        bindings = < &macro_press &kp LALT
+      			   &macro_tap   &kp KP_PLUS &kp N0 &kp N0 &kp F &kp N6    // 00F6 = ö
+      			   &macro_release &kp LALT >; };
+      oe_u: oe_u { compatible = "zmk,behavior-macro"; label = "OE_u"; #binding-cells = <0>;
+        bindings = < &macro_press &kp LALT
+      			   &macro_tap   &kp KP_PLUS &kp N0 &kp N0 &kp D &kp N6    // 00D6 = Ö
+      			   &macro_release &kp LALT >; };
+
+      ue_l: ue_l { compatible = "zmk,behavior-macro"; label = "UE_l"; #binding-cells = <0>;
+        bindings = < &macro_press &kp LALT
+      			   &macro_tap   &kp KP_PLUS &kp N0 &kp N0 &kp F &kp C    // 00FC = ü
+      			   &macro_release &kp LALT >; };
+      ue_u: ue_u { compatible = "zmk,behavior-macro"; label = "UE_u"; #binding-cells = <0>;
+        bindings = < &macro_press &kp LALT
+      			   &macro_tap   &kp KP_PLUS &kp N0 &kp N0 &kp D &kp C    // 00DC = Ü
+      			   &macro_release &kp LALT >; };
+
+      sz_l: sz_l { compatible = "zmk,behavior-macro"; label = "SZ_l"; #binding-cells = <0>;
+        bindings = < &macro_press &kp LALT
+      			   &macro_tap   &kp KP_PLUS &kp N0 &kp N0 &kp D &kp F    // 00DF = ß
+      			   &macro_release &kp LALT >; };
+      sz_u: sz_u { compatible = "zmk,behavior-macro"; label = "SZ_u"; #binding-cells = <0>;
+        bindings = < &macro_press &kp LALT
+      			   &macro_tap   &kp KP_PLUS &kp N1 &kp E &kp N9 &kp E    // 1E9E = ẞ
+      			   &macro_release &kp LALT >; };
+
+      // --- Shift-abhängige Auswahl (korrekt: 0 binding-cells) ---
+      mm_ae: mm_ae {
+        compatible = "zmk,behavior-mod-morph";
+        label = "MM_AE";
+        #binding-cells = <0>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+        bindings = <&ae_l &ae_u>;   // unshifted -> ä, with Shift -> Ä
+      };
+      mm_oe: mm_oe { compatible = "zmk,behavior-mod-morph"; label = "MM_OE"; #binding-cells = <0>;
+        mods = <(MOD_LSFT|MOD_RSFT)>; bindings = <&oe_l &oe_u>; };
+      mm_ue: mm_ue { compatible = "zmk,behavior-mod-morph"; label = "MM_UE"; #binding-cells = <0>;
+        mods = <(MOD_LSFT|MOD_RSFT)>; bindings = <&ue_l &ue_u>; };
+      mm_sz: mm_sz { compatible = "zmk,behavior-mod-morph"; label = "MM_SZ"; #binding-cells = <0>;
+        mods = <(MOD_LSFT|MOD_RSFT)>; bindings = <&sz_l &sz_u>; };
+};
 
   keymap {
     compatible = "zmk,keymap";
@@ -173,8 +107,8 @@
       display-name = "Fn";
       bindings = <
         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &tog 1                                                     &mo 3 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-        &trans &trans &trans &trans &trans &trans  &none                                                     &none &trans  &shift_sel_ue &trans  &shift_sel_oe  &trans  &trans
-        &trans &shift_sel_ae &shift_sel_ss &de_ss &de_ss_cap &trans &trans &trans  &none             &trans &trans &trans &trans             &none &trans &trans &trans &trans  &trans  &trans
+        &trans &trans &trans &trans &trans &trans  &none                                                     &none &trans &mm_ue &trans &mm_oe  &trans  &trans
+        &trans &mm_ae &mm_sz &trans &trans &trans  &none             &trans &trans &trans &trans             &none &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans &trans                           &trans &trans                          &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans                    &trans &trans &trans &trans &trans &trans                   &trans &trans &trans  &trans  &trans
       >;
