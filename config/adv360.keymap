@@ -103,16 +103,38 @@
           >;
       };
 
-      // Helper: mod-tap that outputs lower macro normally, upper macro when Shift held
-      // Usage: &shift_sel lower upper
-      shift_sel: shift_sel {
+      shift_sel_ae: shift_sel_ae {
           compatible = "zmk,behavior-mod-morph";
-          label = "SHIFT_SEL";
-          #binding-cells = <2>;
-          bindings = <&none>, <&none>; // placeholder, real values come from args
+          label = "SHIFT_SEL_AE";
+          #binding-cells = <0>;
           mods = <(MOD_LSFT|MOD_RSFT)>;
+          bindings = <&de_ae &de_ae_cap>;
       };
 
+      shift_sel_oe: shift_sel_oe {
+          compatible = "zmk,behavior-mod-morph";
+          label = "SHIFT_SEL_OE";
+          #binding-cells = <0>;
+          mods = <(MOD_LSFT|MOD_RSFT)>;
+          bindings = <&de_oe &de_oe_cap>;
+      };
+
+      shift_sel_ue: shift_sel_ue {
+          compatible = "zmk,behavior-mod-morph";
+          label = "SHIFT_SEL_UE";
+          #binding-cells = <0>;
+          mods = <(MOD_LSFT|MOD_RSFT)>;
+          bindings = <&de_ue &de_ue_cap>;
+      };
+
+      shift_sel_ss: shift_sel_ss {
+          compatible = "zmk,behavior-mod-morph";
+          label = "SHIFT_SEL_SS";
+          #binding-cells = <0>;
+          mods = <(MOD_LSFT|MOD_RSFT)>;
+          bindings = <&de_ss &de_ss_cap>;
+      };
+	  
       hm: homerow_mods {
           compatible = "zmk,behavior-hold-tap";
           label = "HOMEROW_MODS";
@@ -151,8 +173,8 @@
       display-name = "Fn";
       bindings = <
         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &tog 1                                                     &mo 3 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-        &trans &trans &trans &trans &trans &trans  &none                                                     &none &trans  &shift_sel &de_ue &de_ue_cap  &trans  &shift_sel &de_oe &de_oe_cap  &trans  &trans
-        &trans &shift_sel &de_ae &de_ae_cap  &shift_sel &de_ss &de_ss_cap &trans &trans &trans  &none             &trans &trans &trans &trans             &none &trans &trans &trans &trans  &trans  &trans
+        &trans &trans &trans &trans &trans &trans  &none                                                     &none &trans  &shift_sel_ue &trans  &shift_sel_oe  &trans  &trans
+        &trans &shift_sel_ae &shift_sel_ss &de_ss &de_ss_cap &trans &trans &trans  &none             &trans &trans &trans &trans             &none &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans &trans                           &trans &trans                          &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans                    &trans &trans &trans &trans &trans &trans                   &trans &trans &trans  &trans  &trans
       >;
