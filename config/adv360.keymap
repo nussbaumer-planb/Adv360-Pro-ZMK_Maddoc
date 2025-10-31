@@ -129,7 +129,6 @@
         bindings = <&sz_l &sz_u>;
     };
   };
-};
 
   keymap {
     compatible = "zmk,keymap";
