@@ -160,7 +160,7 @@
         &trans &trans &trans &trans &trans &trans  &none                                                     &none &trans &mm_ue &trans &mm_oe  &trans  &trans
         &trans &mm_ae &mm_sz &trans &trans &trans  &none             &trans &trans &trans &trans             &none &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans &trans                           &trans &trans                          &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans                    &trans &trans &trans &trans &trans &trans                   &trans &trans &trans  &trans  &trans
+        &trans &trans &trans &trans &trans                   &trans &kp INS &trans &trans &trans &trans                   &trans &trans &trans  &trans  &trans
       >;
     };
     mod {
